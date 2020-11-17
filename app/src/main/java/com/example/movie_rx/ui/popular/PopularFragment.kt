@@ -1,5 +1,6 @@
 package com.example.movie_rx.ui.popular
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movie_rx.R
 import com.example.movie_rx.adapter.TopRatedAdapter
 import com.example.movie_rx.model.TopratedResults
+import com.example.movie_rx.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_popular.*
 import java.util.ArrayList
 
@@ -43,7 +45,9 @@ class PopularFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toprateAdapter = TopRatedAdapter(context, listToprate) {
-
+            var intent = Intent(context, DetailActivity::class.java);
+            intent.putExtra(DetailActivity.ID_PAGE,it.id)
+            startActivity(intent)
         }
         var layoutManager: RecyclerView.LayoutManager =
             GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false);
