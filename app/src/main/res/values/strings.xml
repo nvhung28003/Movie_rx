@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Movie_rx</string>
+    <string name="upcomming">Up Comming</string>
+    <string name="toprated">TopRated</string>
+    <string name="popular">Popular</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="display_image">https://image.tmdb.org/t/p/w500%s</string>
+</resources>
