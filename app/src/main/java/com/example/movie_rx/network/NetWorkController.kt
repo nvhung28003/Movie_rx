@@ -45,8 +45,8 @@ class NetWorkController {
             return Observable.zip(apiBuilder?.getCallApiSimilar(movie_id, apiKey),
                 apiBuilder?.getCallApiDetaiMovie(movie_id, apiKey),
                 apiBuilder?.getCallApiVideo(movie_id, apiKey),
-                object : Function3<SimilarModelModel, DetailModel,VideoModel, AllModel> {
-                    override fun apply(t1: SimilarModelModel, t2: DetailModel,t3 : VideoModel): AllModel =
+                object : Function3<TopRatedModel, DetailModel,VideoModel, AllModel> {
+                    override fun apply(t1: TopRatedModel, t2: DetailModel,t3 : VideoModel): AllModel =
                         AllModel(t2, t1,t3)
                 })
 

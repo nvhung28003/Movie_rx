@@ -2,7 +2,7 @@ package com.example.movie_rx.network
 
 
 import com.example.movie_rx.model.DetailModel
-import com.example.movie_rx.model.SimilarModelModel
+
 import com.example.movie_rx.model.TopRatedModel
 import com.example.movie_rx.model.VideoModel
 import io.reactivex.Observable
@@ -46,7 +46,7 @@ interface API {
     fun getCallApiSimilar(
         @Path("movie_id") movie_id: Int?,
         @Query("api_key") apiKey: String?
-    ): Observable<SimilarModelModel>;
+    ): Observable<TopRatedModel>;
 
     @GET("movie/{movie_id}/videos")
     fun getCallApiVideo(
