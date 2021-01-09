@@ -5,6 +5,7 @@
         <variable
             name="item"
             type="com.example.movie_rx.model.TopratedResults" />
+
     </data>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,7 +26,7 @@
         <ImageView
             android:id="@+id/imv_top_rated"
             android:layout_width="match_parent"
-            tools:src="@drawable/load"
+            app:loadImage="@{String.format(@string/display_image,item.posterPath)}"
             android:scaleType="centerCrop"
             android:layout_height="200dp"/>
     </androidx.cardview.widget.CardView>
@@ -38,6 +39,10 @@
         android:textSize="16sp"
         android:layout_marginLeft="5dp"
         android:textColor="#FFFFFF"
-        tools:text="Hi"></TextView>
+
+        android:text="@{item.title}"
+        tools:text="@string/display_image">
+
+    </TextView>
 </LinearLayout>
 </layout>

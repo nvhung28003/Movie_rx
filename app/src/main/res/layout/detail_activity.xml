@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="allModel"
+            type="com.example.movie_rx.model.AllModel"/>
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +20,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                app:loadImage="@{String.format(@string/display_image,allModel.detailModel.backdropPath)}"
                 android:id="@+id/imv_big"
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
@@ -57,6 +65,7 @@
                 app:layout_constraintGuide_begin="240dp" />
 
             <ImageView
+                app:loadImage="@{String.format(@string/display_image,allModel.detailModel.posterPath)}"
                 android:id="@+id/imv_small"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
@@ -73,6 +82,7 @@
                 tools:layout_editor_absoluteY="200dp">
 
                 <TextView
+                    android:text="@{allModel.detailModel.title}"
                     android:id="@+id/txt_title_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,6 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@id/back_ground_imv_big"/>
 
             <TextView
+
                 android:id="@+id/txt_over_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -103,7 +114,7 @@
                 android:layout_marginRight="10dp"
                 android:ellipsize="end"
                 android:maxLines="5"
-                android:text="Over View"
+                android:text="@{allModel.detailModel.overview}"
                 android:textColor="#666666"
                 android:textSize="15sp"
                 app:layout_constraintLeft_toRightOf="@id/imv_small"
@@ -138,3 +149,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>
+</layout>

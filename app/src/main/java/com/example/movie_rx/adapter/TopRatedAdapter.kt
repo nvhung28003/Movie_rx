@@ -7,6 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.movie_rx.BR
+
+
 import com.example.movie_rx.R
 import com.example.movie_rx.databinding.ItemTopRatedBinding
 import com.example.movie_rx.model.TopratedResults
@@ -19,9 +22,12 @@ class TopRatedAdapter(
     RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder>() {
 
 
-    class TopRatedViewHolder(itemViewBinding: ItemTopRatedBinding) :
+    class TopRatedViewHolder(private val itemViewBinding: ItemTopRatedBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
-
+        fun bind(item : TopratedResults){
+                itemViewBinding.setVariable(BR.item,item)
+                itemViewBinding.executePendingBindings()
+        }
 
     }
 
@@ -40,15 +46,8 @@ class TopRatedAdapter(
 
     override fun onBindViewHolder(holder: TopRatedViewHolder, position: Int) {
         var item: TopratedResults = listToprated.get(position)
+        holder.bind(item)
         holder.itemView.setOnClickListener { v -> callback.invoke(item) }
-        var urlImage  = String.format(context!!.resources.getString(R.string.display_image),item.posterPath);
-        val options: RequestOptions = RequestOptions()
-            .centerCrop()
-            .placeholder(R.drawable.load)
-            .error(R.drawable.load)
-
-        Glide.with(context!!).load(urlImage).apply(options).into( holder.itemView.imv_top_rated)
-        holder.itemView.txt_title.text = item.title;
     }
 
 }
